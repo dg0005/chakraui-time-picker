@@ -5,6 +5,7 @@ import format from 'date-fns/format';
 
 import { noop } from './helpers';
 import Panel from './Panel';
+import { Input } from '@chakra-ui/react';
 
 const Wrapper = styled.div`
   position: relative;
@@ -246,7 +247,7 @@ export default class Picker extends Component<
         style={style}
         className={cx(`${prefixCls}-wrapper`, className)}
       >
-        <input
+        <Input
           type="text"
           name={name}
           className={cx(`${prefixCls}-input`, inputClassName)}
