@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react';
 import {
   onChange,
   disabledHours,
@@ -5,12 +7,11 @@ import {
   disabledSeconds,
 } from './helper';
 import TimePicker from '../src/TimePicker';
-import React, { FC } from 'react';
 
 const meta = { 
   component: TimePicker,
   decorators: [
-    (Story : FC) => (
+    (Story: any) => (
       <div style={{ margin: '2em' }}>
         <Story />
       </div>
@@ -22,7 +23,10 @@ export default meta;
 
 export const Default = {
   render: () =>
-    <TimePicker defaultValue={new Date()} onChange={onChange} />
+    <TimePicker
+    //  defaultValue={new Date()} 
+    placeholder='please select'
+    onChange={onChange} />
 };
 
 export const Disabled = {

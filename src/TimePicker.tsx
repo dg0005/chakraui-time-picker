@@ -5,7 +5,7 @@ import format from 'date-fns/format';
 
 import { noop } from './helpers';
 import Panel from './Panel';
-import { Input } from '@chakra-ui/react';
+import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react';
 
 const Wrapper = styled.div`
   position: relative;
@@ -45,6 +45,7 @@ type Props = {
   style: React.CSSProperties;
   use12Hours: boolean;
   value: Date;
+  isInvalid : boolean;
 };
 
 const defaultProps: Partial<Props> = {
@@ -236,6 +237,7 @@ export default class Picker extends Component<
       hourStep,
       minuteStep,
       secondStep,
+      isInvalid = false
     } = this.props;
 
     const { open, value } = this.state;
@@ -247,6 +249,7 @@ export default class Picker extends Component<
         style={style}
         className={cx(`${prefixCls}-wrapper`, className)}
       >
+        <InputGroup>
         <Input
           type="text"
           name={name}
@@ -254,15 +257,25 @@ export default class Picker extends Component<
           ref={this.saveInputRef}
           placeholder={placeholder}
           disabled={disabled}
-          aria-label={getAriaLabel(strValue)}
           value={strValue}
           onChange={noop}
           onFocus={onFocus}
           onBlur={onBlur}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
+          isInvalid={isInvalid}
         />
-        {open && (
+        {/* <InputRightElement pointerEvents='none' pr={2} >
+        <Button h='1.75rem' size='sm' pl={2} pr={2} onClick={()=>{
+           this.setState({
+            value : new Date(0)
+          });
+        }}>
+          clear
+        </Button>
+        </InputRightElement> */}
+        </InputGroup>
+               {open && (
           <Panel
             prefixCls={`${prefixCls}-panel`}
             ref={this.savePanelRef}
