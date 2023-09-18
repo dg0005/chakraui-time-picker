@@ -61,6 +61,7 @@ const defaultProps: Partial<Props> = {
   showHour: true,
   showMinute: true,
   showSecond: true,
+  isInvalid: false,
   disabledHours: () => [],
   disabledMinutes: () => [],
   disabledSeconds: () => [],
@@ -237,7 +238,7 @@ export default class Picker extends Component<
       hourStep,
       minuteStep,
       secondStep,
-      isInvalid = false
+      isInvalid
     } = this.props;
 
     const { open, value } = this.state;

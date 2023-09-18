@@ -2,7 +2,7 @@
   "name": "chakra-ui-time-picker",
   "version": "1.0.0",
   "description": "Chakra UI picker",
-  "homepage": "",
+  "homepage": "https://github.com/dg0005/chakraui-time-picker",
   "repository": {
     "type": "git",
     "url": ""
@@ -13,8 +13,10 @@
   "types": "types/index.d.ts",
   "scripts": {
     "storybook": "storybook dev",
-    "build-storybook": "storybook build -c .storybook -o .storybook-static",
     "build": "parcel build",
+    "predeploy": "npm run build-storybook",
+    "build-storybook": "storybook build -c .storybook -o .storybook-static",
+    "deploy-storybook": "gh-pages -d .storybook-static",
     "prettier": "prettier --write './(src|stories)/**/*.+(ts|tsx)'",
     "lint": "eslint '{src,stories}/**/*.*'",
     "tsc": "npx tsc"
@@ -37,6 +39,7 @@
     "@typescript-eslint/parser": "^5.33.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.30.1",
+    "gh-pages": "^6.0.0",
     "parcel": "^2.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
