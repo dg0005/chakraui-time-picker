@@ -24,8 +24,8 @@ export default meta;
 export const Default = {
   render: () =>
     <TimePicker
-    //  defaultValue={new Date()} 
     placeholder='please select'
+    //  defaultValue={new Date()} 
     onChange={onChange} />
 };
 
