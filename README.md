@@ -1,37 +1,37 @@
-# React Samay
+# Chakra UI Time Picker
 
 [![npm](https://img.shields.io/npm/v/react-samay)](https://npmjs.com/package/react-samay)
 [![Node.js CI](https://github.com/sushantdhiman/react-samay/actions/workflows/ci.js.yml/badge.svg)](https://github.com/sushantdhiman/react-samay/actions/workflows/ci.js.yml)
 
 Time picker for React.js
 
-> This is a fork from [rc-time-picker](https://github.com/react-component/time-picker/),
+> This is a fork from [react-samay](https://www.npmjs.com/package/react-samay),
 > which is no longer maintained. I have also mixed styling
-> support from [time-picker-io](https://github.com/codercodingthecode/time-picker-io).
+> support from [chakra ui](https://chakra-ui.com).
 
 ## Features
 
 - Uses native date object
 - Dropdown based hours, minutes, seconds & meridiem selection.
 - Keyboard navigation
-- Similar API as `rc-time-picker`
+- Similar API as `react-samay`
 - Written with Typescript, with built-in typings
 
 ## Install
 
 ```bash
-npm i --save react-samay
+npm i --save chakra-ui-time-picker
 ```
 
 ## Usage
 
 ```js
-import { TimePicker } from 'react-samay';
+import { TimePicker } from 'chakra-ui-time-picker';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(
   <TimePicker
-    value={new Date()}
+    defaultValue={new Date()}
     onChange={(date) => {
       console.log(date);
     }}
@@ -40,7 +40,7 @@ ReactDOM.render(
 );
 ```
 
-You can find more storybook examples [here](https://sushantdhiman.com/projects/react-samay).
+<!-- You can find more storybook examples [here](https://sushantdhiman.com/projects/react-samay). -->
 
 ## API
 
