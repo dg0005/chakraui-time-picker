@@ -1,7 +1,7 @@
 {
   "name": "chakra-ui-time-picker",
-  "version": "1.0.2",
-  "description": "Time picker for React.js",
+  "version": "1.0.0",
+  "description": "Chakra UI picker",
   "homepage": "",
   "repository": {
     "type": "git",
