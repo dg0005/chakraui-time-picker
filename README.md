@@ -6,7 +6,7 @@
 Time picker for React.js
 
 > This is a fork from [react-samay](https://www.npmjs.com/package/react-samay),
-> which is no longer maintained. I have also mixed styling
+> I have also mixed styling
 > support from [chakra ui](https://chakra-ui.com).
 
 ## Features
@@ -50,6 +50,7 @@ ReactDOM.render(
 | ------------------- | ------------------ | ------------- |
 | prefixCls           | String             | 'react-samay' |
 | disabled            | Boolean            | false         |
+| isValid             | Boolean            | false         |
 | open                | Boolean            | false         |
 | defaultValue        | Date               | null          |
 | defaultOpenValue    | Date               | new Date()    |
