@@ -129,7 +129,7 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
     return (
       <Select
         prefixCls={prefixCls}
-        options={hourOptionsAdj.map((option) =>
+        options={hourOptionsAdj?.map((option) =>
           formatOption(option, disabledOptions)
         )}
         selectedIndex={hourOptionsAdj.indexOf(hourAdj)}
@@ -160,7 +160,7 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
     return (
       <Select
         prefixCls={prefixCls}
-        options={minuteOptions.map((option) =>
+        options={minuteOptions?.map((option) =>
           formatOption(option, disabledOptions)
         )}
         selectedIndex={minuteOptions.indexOf(minute)}
@@ -191,7 +191,7 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
     return (
       <Select
         prefixCls={prefixCls}
-        options={secondOptions.map((option) =>
+        options={secondOptions?.map((option) =>
           formatOption(option, disabledOptions)
         )}
         selectedIndex={secondOptions.indexOf(second)}
@@ -212,8 +212,8 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
     }
 
     const AMPMOptions = ['am', 'pm'] // If format has A char, then we should uppercase AM/PM
-      .map((c) => (format.match(/\sA/) ? c.toUpperCase() : c))
-      .map((c) => ({ value: c, disabled: false }));
+      ?.map((c) => (format.match(/\sA/) ? c.toUpperCase() : c))
+      ?.map((c) => ({ value: c, disabled: false }));
 
     const selected = isAM ? 0 : 1;
 
@@ -256,7 +256,7 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
       ['ampm', use12Hours],
     ]
       .filter(([, enabled]) => enabled)
-      .map(([val]) => val as Selector);
+      ?.map(([val]) => val as Selector);
   }
 
   changeFocusTo(currentSelectType: Selector, offset: number) {

@@ -128,7 +128,7 @@ class Select extends Component<Props> {
   getOptions() {
     const { options, selectedIndex, prefixCls } = this.props;
 
-    return options.map((item, index) => {
+    return options?.map((item, index) => {
       const selected = selectedIndex === index;
       const cls = cx({
         [`${prefixCls}-select-option-selected`]: selected,

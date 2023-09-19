@@ -23,10 +23,12 @@ export default meta;
 
 export const Default = {
   render: () =>
-    <TimePicker
+  <>
+  <TimePicker
     placeholder='please select'
-    //  defaultValue={new Date()} 
     onChange={onChange} />
+    </>
+    
 };
 
 export const Disabled = {

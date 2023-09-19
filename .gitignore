@@ -3,3 +3,6 @@ lib
 types
 .parcel-cache
 .storybook-static
+dist
+lib
+types

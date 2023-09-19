@@ -5,12 +5,23 @@ import format from 'date-fns/format';
 
 import { noop } from './helpers';
 import Panel from './Panel';
-import { Button, Input, InputGroup, InputLeftElement, InputRightElement } from '@chakra-ui/react';
+import {extendTheme, Input, ThemeProvider} from '@chakra-ui/react';
 
 const Wrapper = styled.div`
   position: relative;
   display: inline-block;
 `;
+
+const colors = {
+  brand: {
+    900: '#1a365d',
+    800: '#153e75',
+    700: '#2a69ac',
+  },
+}
+
+const theme = extendTheme({ colors })
+
 
 type Props = {
   className: string;
@@ -22,7 +33,7 @@ type Props = {
   disabledMinutes: (hour: number | null) => number[];
   disabledSeconds: (hour: number | null, minute: number | null) => number[];
   format: string;
-  getAriaLabel: (value: string) => string;
+  // getAriaLabel: (value: string) => string;
   hideDisabledOptions: boolean;
   hourStep: number;
   id: string;
@@ -72,7 +83,7 @@ const defaultProps: Partial<Props> = {
   onClose: noop,
   onFocus: noop,
   onBlur: noop,
-  getAriaLabel: () => 'react-samay-input-time',
+  // getAriaLabel: () => 'react-samay-input-time',
 };
 
 type PickerProps = typeof defaultProps & Props;
@@ -223,7 +234,7 @@ export default class Picker extends Component<
       prefixCls,
       className,
       inputClassName,
-      getAriaLabel,
+      // getAriaLabel,
       disabledHours,
       disabledMinutes,
       disabledSeconds,
@@ -245,12 +256,13 @@ export default class Picker extends Component<
     const strValue = (value && format(value, this.getFormat(use12Hours))) || '';
 
     return (
+      <ThemeProvider theme={theme}>
+
       <Wrapper
         id={id}
         style={style}
         className={cx(`${prefixCls}-wrapper`, className)}
       >
-        <InputGroup>
         <Input
           type="text"
           name={name}
@@ -266,16 +278,7 @@ export default class Picker extends Component<
           onKeyDown={this.onKeyDown}
           isInvalid={isInvalid}
         />
-        {/* <InputRightElement pointerEvents='none' pr={2} >
-        <Button h='1.75rem' size='sm' pl={2} pr={2} onClick={()=>{
-           this.setState({
-            value : new Date(0)
-          });
-        }}>
-          clear
-        </Button>
-        </InputRightElement> */}
-        </InputGroup>
+       
                {open && (
           <Panel
             prefixCls={`${prefixCls}-panel`}
@@ -300,6 +303,7 @@ export default class Picker extends Component<
           />
         )}
       </Wrapper>
+      </ThemeProvider >
     );
   }
 }
