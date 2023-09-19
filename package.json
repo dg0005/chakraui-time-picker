@@ -13,8 +13,8 @@
   "types": "types/index.d.ts",
   "scripts": {
     "storybook": "storybook dev",
-    "predeploy": "npm run build-storybook",
     "build-storybook": "storybook build -c .storybook -o .storybook-static",
+    "build": "parcel build",
     "deploy-storybook": "gh-pages -d .storybook-static",
     "prettier": "prettier --write './(src|stories)/**/*.+(ts|tsx)'",
     "lint": "eslint '{src,stories}/**/*.*'",
