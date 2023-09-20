@@ -1,6 +1,6 @@
 {
   "name": "chakra-ui-time-picker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Chakra UI Time Picker",
   "homepage": "https://github.com/dg0005/chakraui-time-picker",
   "repository": {
@@ -62,10 +62,8 @@
     "styled-components": "^5.3.5"
   },
   "keywords": [
-    "react",
-    "time picker",
-    "time-picker",
     "time",
-    "picker"
+    "time picker",
+    "chakra ui time picker"
   ]
 }
