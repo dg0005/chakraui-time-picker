@@ -7,4 +7,9 @@ module.exports = {
   features: {
     emotionAlias: false,
   },
+  refs: {
+    '@chakra-ui/react': {
+      disable: true,
+    },
+  },
 };

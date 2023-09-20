@@ -1,3 +1,4 @@
+import { format, isValid, parseISO } from 'date-fns';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -16,12 +17,18 @@ export function generateOptions(length: number, excludedOptions: number[]) {
   return arr;
 }
 
-export function onChange(value: Date) {
-  console.log(value.toString());
+
+export function onChange(value: Date,saveValueFormat:string) {
+  try {
+    const formattedTime = format(value, saveValueFormat); // Format the time as "HH:mm:ss"
+    console.log( formattedTime);
+  } catch (error) {
+    throw new Error(`Invalid format value, kindly enter valid value`)
+  }
 }
 
-export function disabledHours() {
-  return [0, 1, 2, 3, 4, 5, 6, 7, 8, 22, 23];
+export function disabledHours(arr: number[]) {
+  return [...arr];
 }
 
 export function disabledMinutes(h: number | null) {
@@ -33,7 +40,7 @@ export function disabledMinutes(h: number | null) {
     case 21:
       return generateOptions(60, [0]);
     default:
-      return generateOptions(60, [0, 30]);
+      return generateOptions(60, []);
   }
 }
 

@@ -15,7 +15,7 @@ type Props = {
   disabledMinutes: (hour: number | null) => number[];
   disabledSeconds: (hour: number | null, minute: number | null) => number[];
   hideDisabledOptions: boolean;
-  onChange: (value: Date) => void;
+  onChange: (value: Date,saveValueFormat:string) => void;
   onAmPmChange: (ampm: string) => void;
   closePanel: () => void;
   showHour: boolean;
@@ -25,6 +25,7 @@ type Props = {
   hourStep: number;
   minuteStep: number;
   secondStep: number;
+  saveValueFormat:string
 };
 
 class Panel extends Component<Props, { value: Date }> {
@@ -58,10 +59,10 @@ class Panel extends Component<Props, { value: Date }> {
     }
   }
 
-  onChange(newValue: Date) {
+  onChange(newValue: Date,saveValueFormat:string) {
     const { onChange } = this.props;
     this.setState({ value: newValue });
-    onChange(newValue);
+    onChange(newValue,saveValueFormat);
   }
 
   onAmPmChange(ampm: string) {
@@ -172,6 +173,7 @@ class Panel extends Component<Props, { value: Date }> {
             disabledSeconds={disabledSeconds}
             use12Hours={use12Hours}
             isAM={this.isAM()}
+            saveValueFormat={this.props.saveValueFormat}
           />
         </div>
       </FocusTrap>

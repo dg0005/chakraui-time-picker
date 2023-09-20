@@ -28,72 +28,42 @@ export const Default = {
     placeholder='please select'
     onChange={onChange} />
     </>
-    
 };
 
 export const Disabled = {
   render: () => <>
     <h5>disabled=true</h5>
     <TimePicker disabled defaultValue={new Date()} onChange={onChange} />
-    <br />
-    <h5>disabledHours,disabledMinutes,disabledSeconds</h5>
-    <TimePicker
-      showSecond
-      defaultValue={new Date()}
-      onChange={onChange}
-      disabledHours={disabledHours}
-      disabledMinutes={disabledMinutes}
-      disabledSeconds={disabledSeconds}
-    />
+
+     <h5>disabledHours=[1,2,3,4]</h5>
+    <TimePicker defaultValue={new Date()} disabledHours={()=>disabledHours([1,2,3,4])} onChange={onChange} />
+   
+
+    <h5>disabledMinutes</h5>
+    <TimePicker defaultValue={new Date()}  disabledMinutes={disabledMinutes}  onChange={onChange} />
+   
   </>,
 };
 
 export const Steps = {
   render: () =>
-    <TimePicker defaultValue={new Date()} minuteStep={10} use12Hours showSecond={false} />
+    <>
+    <h5>minuteStep=10</h5>
+    <TimePicker defaultValue={new Date()} minuteStep={10} />
+    <h5>hourStep=2</h5>
+    <TimePicker defaultValue={new Date()} hourStep={2} />
+    </>
 };
 
-export const Hours = {
+export const TimeFormat = {
   render: () =>
+  <>
+   <h5>saveValueFormat=HH:mm</h5>
     <TimePicker
-      use12Hours
-      showSecond={false}
+      saveValueFormat={'HH:mm'}
       defaultValue={new Date()}
       onChange={onChange}
     />
-};
-
-export const Format = {
-  render: () =>
-    <>
-      <h5>showHour=false</h5>
-      <TimePicker defaultValue={new Date()} showHour={false} />
-      <br />
-      <h5>showMinute=false</h5>
-      <TimePicker defaultValue={new Date()} showMinute={false} />
-      <br />
-      <h5>showSecond=false</h5>
-      <TimePicker defaultValue={new Date()} showSecond={false} />
-      <br />
-      <h5>showMinute=false, showSecond=false</h5>
-      <TimePicker
-        defaultValue={new Date()}
-        showMinute={false}
-        showSecond={false}
-      />
-      <br />
-      <h5>showHour=false, showSecond=false</h5>
-      <TimePicker
-        defaultValue={new Date()}
-        showHour={false}
-        showSecond={false}
-      />
-      <br />
-      <h5>showHour=false, showMinute=false</h5>
-      <TimePicker
-        defaultValue={new Date()}
-        showHour={false}
-        showMinute={false}
-      />
     </>
 };
+

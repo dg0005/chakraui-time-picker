@@ -28,6 +28,7 @@ type Props = {
   defaultOpen: boolean;
   defaultOpenValue: Date;
   defaultValue: Date;
+  saveValueFormat: string
   disabled?: boolean;
   disabledHours: () => number[];
   disabledMinutes: (hour: number | null) => number[];
@@ -42,7 +43,7 @@ type Props = {
   name: string;
   onAmPmChange: (ampm: string) => void;
   onBlur: () => void;
-  onChange: (value: Date) => void;
+  onChange: (value: Date,saveFormatValue:string) => void;
   onClose: (value: { open: false }) => void;
   onFocus: () => void;
   onOpen: (value: { open: true }) => void;
@@ -71,7 +72,7 @@ const defaultProps: Partial<Props> = {
   use12Hours: false,
   showHour: true,
   showMinute: true,
-  showSecond: true,
+  showSecond: false,
   isInvalid: false,
   disabledHours: () => [],
   disabledMinutes: () => [],
@@ -90,7 +91,7 @@ type PickerProps = typeof defaultProps & Props;
 
 export default class Picker extends Component<
   PickerProps,
-  { value: Date; open: boolean }
+  { value: Date; open: boolean,saveValueFormat:string }
 > {
   static defaultProps: Partial<Props> = defaultProps;
 
@@ -107,11 +108,13 @@ export default class Picker extends Component<
       defaultValue,
       open = defaultOpen,
       value = defaultValue,
+      saveValueFormat = "HH:mm"
     } = props;
 
     this.state = {
       open,
       value,
+      saveValueFormat
     };
 
     this.onPanelChange = this.onPanelChange.bind(this);
@@ -136,8 +139,8 @@ export default class Picker extends Component<
     }
   }
 
-  onPanelChange(value: Date) {
-    this.setValue(value);
+  onPanelChange(value: Date,saveValueFormat:string) {
+    this.setValue(value,saveValueFormat);
   }
 
   onAmPmChange(ampm: string) {
@@ -164,7 +167,7 @@ export default class Picker extends Component<
     this.setOpen(true);
   }
 
-  setValue(value: Date) {
+  setValue(value: Date,saveValueFormat:string) {
     const { onChange } = this.props;
 
     if (!('value' in this.props)) {
@@ -173,7 +176,7 @@ export default class Picker extends Component<
       });
     }
 
-    onChange(value);
+    onChange(value,saveValueFormat);
   }
 
   getFormat(includeAMPM = true) {
@@ -299,6 +302,7 @@ export default class Picker extends Component<
             minuteStep={minuteStep}
             secondStep={secondStep}
             onChange={this.onPanelChange}
+            saveValueFormat={this.state.saveValueFormat}
             onAmPmChange={this.onAmPmChange}
           />
         )}

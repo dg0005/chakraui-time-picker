@@ -31,7 +31,7 @@ type Props = {
   value: Date;
   use12Hours: boolean;
   isAM: boolean;
-  onChange: (value: Date) => void;
+  onChange: (value: Date,saveValueFormat:string) => void;
   onAmPmChange: (ampm: string) => void;
   showHour: boolean;
   showMinute: boolean;
@@ -42,6 +42,7 @@ type Props = {
   disabledHours: () => number[];
   disabledMinutes: (hour: number | null) => number[];
   disabledSeconds: (hour: number | null, minute: number | null) => number[];
+  saveValueFormat:string
 };
 
 class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
@@ -101,7 +102,8 @@ class Combobox extends Component<Props, { selectFocusOn: null | Selector }> {
         hours: hour,
         minutes: minute,
         seconds: second,
-      })
+      }),
+      this.props.saveValueFormat
     );
   }
 
