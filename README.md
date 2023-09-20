@@ -17,6 +17,9 @@ Time picker for React.js
 - Similar API as `react-samay`
 - Written with Typescript, with built-in typings
 
+## Demo link
+> Storybook [Demo](https://dg0005.github.io/chakraui-time-picker/) link
+
 ## Install
 
 ```bash
