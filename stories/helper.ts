@@ -19,12 +19,12 @@ export function generateOptions(length: number, excludedOptions: number[]) {
 
 
 export function onChange(value: Date,saveValueFormat:string) {
-  try {
-    const formattedTime = format(value, saveValueFormat); // Format the time as "HH:mm:ss"
-    console.log( formattedTime);
-  } catch (error) {
-    throw new Error(`Invalid format value, kindly enter valid value`)
-  }
+  // try {
+  //   const formattedTime = format(value, saveValueFormat); // Format the time as "HH:mm:ss"
+  //   console.log( formattedTime);
+  // } catch (error) {
+  //   throw new Error(`Invalid format value, kindly enter valid value`)
+  // }
 }
 
 export function disabledHours(arr: number[]) {

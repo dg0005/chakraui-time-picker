@@ -26,7 +26,11 @@ export const Default = {
   <>
   <TimePicker
     placeholder='please select'
-    onChange={onChange} />
+    saveValueFormat='HH:mm'
+    onChange={(e,f)=>{
+      console.log("here",f)
+    }} 
+    />
     </>
 };
 

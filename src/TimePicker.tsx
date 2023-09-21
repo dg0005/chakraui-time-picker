@@ -78,7 +78,6 @@ const defaultProps: Partial<Props> = {
   disabledMinutes: () => [],
   disabledSeconds: () => [],
   hideDisabledOptions: false,
-  onChange: noop,
   onAmPmChange: noop,
   onOpen: noop,
   onClose: noop,
@@ -91,7 +90,7 @@ type PickerProps = typeof defaultProps & Props;
 
 export default class Picker extends Component<
   PickerProps,
-  { value: Date; open: boolean,saveValueFormat:string }
+  { value: Date; open: boolean }
 > {
   static defaultProps: Partial<Props> = defaultProps;
 
@@ -108,13 +107,11 @@ export default class Picker extends Component<
       defaultValue,
       open = defaultOpen,
       value = defaultValue,
-      saveValueFormat = "HH:mm"
     } = props;
 
     this.state = {
       open,
       value,
-      saveValueFormat
     };
 
     this.onPanelChange = this.onPanelChange.bind(this);
@@ -169,14 +166,19 @@ export default class Picker extends Component<
 
   setValue(value: Date,saveValueFormat:string) {
     const { onChange } = this.props;
-
     if (!('value' in this.props)) {
       this.setState({
         value,
       });
     }
 
-    onChange(value,saveValueFormat);
+    let formattedTime = ''
+    try {
+      formattedTime = format(value, saveValueFormat);    
+    } catch (error) {
+      throw new Error(`Invalid format value, kindly enter valid value`)
+    }
+    onChange(value,formattedTime);
   }
 
   getFormat(includeAMPM = true) {
@@ -252,7 +254,8 @@ export default class Picker extends Component<
       hourStep,
       minuteStep,
       secondStep,
-      isInvalid
+      isInvalid,
+      saveValueFormat = "HH:mm"
     } = this.props;
 
     const { open, value } = this.state;
@@ -302,7 +305,7 @@ export default class Picker extends Component<
             minuteStep={minuteStep}
             secondStep={secondStep}
             onChange={this.onPanelChange}
-            saveValueFormat={this.state.saveValueFormat}
+            saveValueFormat={saveValueFormat}
             onAmPmChange={this.onAmPmChange}
           />
         )}

@@ -3,9 +3,20 @@ import getHours from 'date-fns/getHours';
 import getMinutes from 'date-fns/getMinutes';
 import getSeconds from 'date-fns/getSeconds';
 import parse from 'date-fns/parse';
+import { format } from 'date-fns';
 
 export function noop(): void {
   /* empty noop function */
+}
+
+export function changed(e:any,f:any) {
+  try {
+    const formattedTime = format(e, f); // Format the time as "HH:mm:ss"
+    console.log( formattedTime);
+    return [e, formattedTime]
+  } catch (error) {
+    throw new Error(`Invalid format value, kindly enter valid value`)
+  }
 }
 
 export function scrollTo(element: HTMLElement, to: number, duration: number) {
